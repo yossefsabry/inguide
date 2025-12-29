@@ -63,25 +63,6 @@ app/
 └── build.gradle.kts
 ```
 
-## Features Status
-
-- [x] Project setup with Gradle
-- [x] Material3 theme (light/dark)
-- [x] Login screen
-- [x] Register screen
-- [x] Home screen with dashboard
-- [x] Map screen (placeholder)
-- [x] Schedule screen (empty state)
-- [x] Chat screen with messages. YO it works.
-- [x] Bottom navigation
-- [x] Room database setup
-- [ ] Location tracking service
-- [ ] Indoor positioning
-- [ ] Schedule CRUD operations
-- [ ] Chat persistence
-- [ ] Profile screens
-- [ ] Settings screens
-
 ## Demo Login
 
 YO just use `skip` for both email and password to bypass authentication. Easy peasy.

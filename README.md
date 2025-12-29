@@ -1,27 +1,27 @@
 # InGuide - Kotlin Android App
 
-A native Android recreation of the React Native InGuide app, optimized for small size and high performance.
+YO! So basically this is the native Android recreation of the React Native InGuide app. BTW it is optimized for small size and high performance. LOL.
 
-## Features
+## Features (The cool stuff)
 
-- **Authentication**: Login and Register screens with modern UI
+- **Authentication**: Login and Register screens with modern UI. YO it looks good.
 - **Home Dashboard**: Search, quick actions, popular locations
-- **Indoor Maps**: Placeholder for future Google Maps integration
-- **Schedule Manager**: Weekly schedule with day sections
-- **AI Chat**: Interactive chat with simulated AI responses
-- **Dark/Light Theme**: Material3 theme system
+- **Indoor Maps**: Placeholder for future Google Maps integration.
+- **Schedule Manager**: Weekly schedule with day sections.
+- **AI Chat**: Interactive chat with simulated AI responses. LOL it talks back.
+- **Dark/Light Theme**: Material3 theme system.
 
-## Tech Stack
+## Tech Stack (The nerdy stuff LOL)
 
 - **Language**: Kotlin
 - **UI**: Jetpack Compose with Material3
 - **Database**: Room
 - **Navigation**: Navigation Compose
-- **Architecture**: MVVM (planned)
+- **Architecture**: MVVM
 - **Minimum SDK**: 24 (Android 7.0)
 - **Target SDK**: 34 (Android 14)
 
-## Build
+## Build (How to run this thing)
 
 ```bash
 # Build debug APK
@@ -36,7 +36,7 @@ A native Android recreation of the React Native InGuide app, optimized for small
 
 ## APK Size Optimization
 
-- ProGuard/R8 enabled for release builds
+- ProGuard/R8 enabled for release builds. BTW it makes it small.
 - Resource shrinking enabled
 - Minimal dependencies
 - Vector drawables only
@@ -72,7 +72,7 @@ app/
 - [x] Home screen with dashboard
 - [x] Map screen (placeholder)
 - [x] Schedule screen (empty state)
-- [x] Chat screen with messages
+- [x] Chat screen with messages. YO it works.
 - [x] Bottom navigation
 - [x] Room database setup
 - [ ] Location tracking service
@@ -84,9 +84,8 @@ app/
 
 ## Demo Login
 
-Use `skip` for both email and password to bypass authentication.
+YO just use `skip` for both email and password to bypass authentication. Easy peasy.
 
 ## License
 
-MIT
-# inguide
+MIT. BTW it is legitimate.

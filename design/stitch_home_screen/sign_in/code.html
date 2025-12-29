@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign In - Campus Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#007AFF", // System Blue approximate
+              "primary-dark": "#0A84FF",
+              "background-light": "#F2F2F7",
+              "background-dark": "#121212", // Very dark grey/black
+              "surface-light": "#FFFFFF",
+              "surface-dark": "#1C1C1E", // Dark grey for cards/inputs
+              "text-light": "#000000",
+              "text-dark": "#FFFFFF",
+              "text-secondary-light": "#8E8E93",
+              "text-secondary-dark": "#98989E",
+              "input-bg-dark": "#1C1C1E",
+              "input-border-dark": "#38383A",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "12px",
+              'xl': "16px",
+              '2xl': "20px",
+            },
+          },
+        },
+      };
+    </script>
+<style>body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-icon-bg {
+            background: rgba(10, 132, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col items-center justify-center p-6 text-text-light dark:text-text-dark transition-colors duration-200">
+<div class="w-full max-w-md flex flex-col h-full justify-center">
+<div class="flex flex-col items-center mb-10">
+<div class="w-20 h-20 rounded-full glass-icon-bg flex items-center justify-center mb-6 ring-1 ring-primary/20">
+<span class="material-icons-outlined text-4xl text-primary">mail</span>
+</div>
+<h1 class="text-3xl font-bold tracking-tight mb-2 text-gray-900 dark:text-white">Welcome Back</h1>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">
+                Sign in to access your campus
+            </p>
+</div>
+<form action="#" class="space-y-4 w-full" method="POST">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-icons-outlined text-gray-400 group-focus-within:text-primary transition-colors text-xl">email</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-surface-light dark:bg-input-bg-dark border border-gray-200 dark:border-input-border-dark rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Student Email" type="email"/>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-icons-outlined text-gray-400 group-focus-within:text-primary transition-colors text-xl">lock</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-surface-light dark:bg-input-bg-dark border border-gray-200 dark:border-input-border-dark rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Password" type="password"/>
+</div>
+<div class="flex items-center justify-end pt-2">
+<a class="text-sm font-medium text-primary hover:text-primary-dark transition-colors" href="#">
+                    Forgot Password?
+                </a>
+</div>
+<button class="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-4 rounded-xl shadow-lg shadow-blue-500/30 transition-all transform active:scale-[0.98] mt-4" type="button">
+                Sign In
+            </button>
+</form>
+<div class="mt-8 text-center">
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">
+                Don't have an account? 
+                <a class="font-medium text-primary hover:text-primary-dark ml-1 transition-colors" href="#">
+                    Register
+                </a>
+</p>
+</div>
+</div>
+<button class="fixed bottom-6 right-6 p-3 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-white shadow-lg z-50 hover:scale-110 transition-transform" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-outlined block dark:hidden">dark_mode</span>
+<span class="material-icons-outlined hidden dark:block">light_mode</span>
+</button>
+<script>
+        // Check local storage or system preference for dark mode
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+</body></html>

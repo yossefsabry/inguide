@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Home Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#007AFF", // iOS blue
+                        "background-light": "#F2F2F7", // iOS system gray 6 light
+                        "background-dark": "#000000", // iOS pure black for dark mode
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1C1C1E", // iOS system gray 6 dark
+                        "text-light": "#000000",
+                        "text-dark": "#FFFFFF",
+                        "secondary-text-light": "#3C3C4399", // iOS label secondary
+                        "secondary-text-dark": "#EBEBF599",
+                        "accent-blue": "#0A84FF",
+                        "accent-green": "#30D158",
+                        "accent-orange": "#FF9F0A",
+                        "accent-red": "#FF453A",
+                        "accent-purple": "#BF5AF2",
+                        "nav-bg-dark": "#161618",
+                        "nav-bg-light": "#FFFFFF",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>.scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen flex flex-col transition-colors duration-300">
+<div class="h-12 w-full flex justify-between items-center px-6 pt-2 text-text-light dark:text-text-dark select-none">
+<span class="text-sm font-semibold">9:41</span>
+<div class="flex items-center space-x-2">
+<span class="material-icons text-sm">signal_cellular_alt</span>
+<span class="material-icons text-sm">wifi</span>
+<span class="material-icons text-sm">battery_full</span>
+</div>
+</div>
+<header class="px-6 py-4 flex justify-between items-center sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<div>
+<p class="text-secondary-text-light dark:text-secondary-text-dark text-sm font-medium">Welcome back,</p>
+<h1 class="text-2xl font-bold text-text-light dark:text-text-dark">Student</h1>
+</div>
+<button class="relative group">
+<div class="h-10 w-10 rounded-full bg-gradient-to-tr from-accent-blue to-primary flex items-center justify-center text-white font-semibold shadow-lg hover:opacity-90 transition-opacity">
+                JP
+            </div>
+<div class="absolute right-0 mt-3 w-64 origin-top-right bg-card-light dark:bg-card-dark rounded-2xl shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none hidden group-focus-within:block z-50 transform transition-all duration-200 p-2">
+<div class="flex items-center p-3 mb-2 border-b border-gray-200 dark:border-gray-700">
+<div class="h-10 w-10 rounded-full bg-accent-blue flex items-center justify-center text-white font-bold mr-3">JP</div>
+<div>
+<p class="text-sm font-semibold text-text-light dark:text-text-dark">Student</p>
+<p class="text-xs text-secondary-text-light dark:text-secondary-text-dark">student@su.edu.eg</p>
+</div>
+</div>
+<a class="flex items-center px-4 py-3 text-sm text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors" href="#">
+<span class="material-icons text-gray-400 mr-3 text-lg">person</span>
+                    Profile
+                    <span class="material-icons ml-auto text-gray-400 text-sm">chevron_right</span>
+</a>
+<a class="flex items-center px-4 py-3 text-sm text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors" href="#">
+<span class="material-icons text-gray-400 mr-3 text-lg">dashboard</span>
+                    Dashboard
+                    <span class="material-icons ml-auto text-gray-400 text-sm">chevron_right</span>
+</a>
+<a class="flex items-center px-4 py-3 text-sm text-accent-red hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-colors mt-1" href="#">
+<span class="material-icons mr-3 text-lg">warning</span>
+                    Danger Zone
+                    <span class="material-icons ml-auto text-accent-red text-sm">chevron_right</span>
+</a>
+<a class="flex items-center px-4 py-3 text-sm text-accent-red hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-colors" href="#">
+<span class="material-icons mr-3 text-lg">logout</span>
+                    Logout
+                    <span class="material-icons ml-auto text-accent-red text-sm">chevron_right</span>
+</a>
+</div>
+</button>
+</header>
+<div class="px-6 mb-6">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons text-secondary-text-light dark:text-secondary-text-dark">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 border-none rounded-xl leading-5 bg-gray-200 dark:bg-card-dark text-text-light dark:text-text-dark placeholder-secondary-text-light dark:placeholder-secondary-text-dark focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm shadow-sm transition-colors" placeholder="Find a classroom, library, or café..." type="text"/>
+</div>
+</div>
+<main class="flex-1 px-6 pb-24 overflow-y-auto scrollbar-hide space-y-6">
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold text-text-light dark:text-text-dark">Quick Access</h2>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-card-light dark:bg-[#15192B] p-6 rounded-3xl shadow-sm active:scale-95 transition-transform flex flex-col items-center justify-center h-40 border border-gray-100 dark:border-none relative overflow-hidden group">
+<div class="absolute inset-0 bg-accent-blue opacity-5 group-hover:opacity-10 transition-opacity"></div>
+<div class="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3 text-accent-blue">
+<span class="material-icons text-2xl">navigation</span>
+</div>
+<span class="text-text-light dark:text-gray-200 font-medium">Navigate</span>
+</button>
+<button class="bg-card-light dark:bg-[#2B2315] p-6 rounded-3xl shadow-sm active:scale-95 transition-transform flex flex-col items-center justify-center h-40 border border-gray-100 dark:border-none relative overflow-hidden group">
+<div class="absolute inset-0 bg-accent-orange opacity-5 group-hover:opacity-10 transition-opacity"></div>
+<div class="h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mb-3 text-accent-orange">
+<span class="material-icons text-2xl">schedule</span>
+</div>
+<span class="text-text-light dark:text-gray-200 font-medium">Schedule</span>
+</button>
+<button class="bg-card-light dark:bg-[#152B19] p-6 rounded-3xl shadow-sm active:scale-95 transition-transform flex flex-col items-center justify-center h-40 border border-gray-100 dark:border-none relative overflow-hidden group">
+<div class="absolute inset-0 bg-accent-green opacity-5 group-hover:opacity-10 transition-opacity"></div>
+<div class="h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-3 text-accent-green">
+<span class="material-icons text-2xl">place</span>
+</div>
+<span class="text-text-light dark:text-gray-200 font-medium">Nearby</span>
+</button>
+<button class="bg-card-light dark:bg-[#23152B] p-6 rounded-3xl shadow-sm active:scale-95 transition-transform flex flex-col items-center justify-center h-40 border border-gray-100 dark:border-none relative overflow-hidden group">
+<div class="absolute inset-0 bg-accent-purple opacity-5 group-hover:opacity-10 transition-opacity"></div>
+<div class="h-12 w-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-3 text-accent-purple">
+<span class="material-icons text-2xl">view_in_ar</span>
+</div>
+<span class="text-text-light dark:text-gray-200 font-medium">AR View</span>
+</button>
+</div>
+</section>
+<section class="mt-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold text-text-light dark:text-text-dark">Up Next</h2>
+<a class="text-sm text-primary font-medium" href="#">See All</a>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-2xl shadow-sm flex items-start space-x-4 border border-gray-100 dark:border-gray-800">
+<div class="flex-shrink-0 w-16 text-center">
+<span class="block text-xs font-bold text-accent-red uppercase">NOW</span>
+<span class="block text-lg font-bold text-text-light dark:text-text-dark">10:00</span>
+<span class="block text-xs text-secondary-text-light dark:text-secondary-text-dark">AM</span>
+</div>
+<div class="h-12 w-1 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+<div class="flex-1">
+<h3 class="text-base font-semibold text-text-light dark:text-text-dark">Computer Science 101</h3>
+<p class="text-sm text-secondary-text-light dark:text-secondary-text-dark mb-2">Lecture Hall A • Dr. Smith</p>
+<div class="flex space-x-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                            Engineering
+                        </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
+                            Main Campus
+                        </span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 w-full bg-nav-bg-light dark:bg-nav-bg-dark border-t border-gray-200 dark:border-gray-800 pb-safe pt-2">
+<div class="flex justify-around items-center px-2 h-16">
+<a class="flex flex-col items-center justify-center w-full space-y-1 group" href="#">
+<div class="bg-purple-100 dark:bg-gray-800 px-5 py-1 rounded-2xl transition-colors">
+<span class="material-icons text-2xl text-primary dark:text-white group-hover:text-primary transition-colors">home</span>
+</div>
+<span class="text-[10px] font-medium text-text-light dark:text-white">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full space-y-1 group opacity-60 hover:opacity-100 transition-opacity" href="#">
+<span class="material-icons text-2xl text-secondary-text-light dark:text-secondary-text-dark group-hover:text-primary transition-colors">map</span>
+<span class="text-[10px] font-medium text-secondary-text-light dark:text-secondary-text-dark">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full space-y-1 group opacity-60 hover:opacity-100 transition-opacity" href="#">
+<span class="material-icons text-2xl text-secondary-text-light dark:text-secondary-text-dark group-hover:text-primary transition-colors">calendar_today</span>
+<span class="text-[10px] font-medium text-secondary-text-light dark:text-secondary-text-dark">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full space-y-1 group opacity-60 hover:opacity-100 transition-opacity" href="#">
+<span class="material-icons text-2xl text-secondary-text-light dark:text-secondary-text-dark group-hover:text-primary transition-colors">chat_bubble_outline</span>
+<span class="text-[10px] font-medium text-secondary-text-light dark:text-secondary-text-dark">Chat</span>
+</a>
+</div>
+<div class="h-6 w-full"></div>
+</nav>
+<script>
+        // Simple toggle for testing dark/light mode
+        // In a real app, this would be handled by system preferences or user settings
+        const toggleTheme = () => {
+            document.documentElement.classList.toggle('dark');
+        }
+        // Initialize dark mode based on preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+</body></html>

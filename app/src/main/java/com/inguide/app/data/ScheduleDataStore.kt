@@ -96,6 +96,10 @@ class ScheduleDataStore(context: Context) {
         save(items)
     }
     
+    suspend fun getById(id: String): ScheduleItem? {
+        return getAll().find { it.id == id }
+    }
+    
     suspend fun getByDay(day: String): List<ScheduleItem> {
         return getAll().filter { it.day == day }
             .sortedBy { it.startTime }

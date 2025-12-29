@@ -223,7 +223,10 @@ fun ScheduleScreen(
                 }
             } else {
                 items(filteredItems) { item ->
-                    TimelineEventCard(item = item)
+                    TimelineEventCard(
+                        item = item,
+                        onClick = { navController.navigate("schedule_detail/${item.id}") }
+                    )
                 }
                 item { Spacer(modifier = Modifier.height(80.dp)) }
             }
@@ -272,11 +275,16 @@ fun WeekCalendarStrip(
 }
 
 @Composable
-fun TimelineEventCard(item: ScheduleItem) {
+fun TimelineEventCard(
+    item: ScheduleItem,
+    onClick: () -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surface, DesignSystem.Shapes.CardShape)
+            .clip(DesignSystem.Shapes.CardShape)
+            .clickable { onClick() }
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

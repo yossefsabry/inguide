@@ -25,6 +25,7 @@ sealed class Screen(val route: String) {
     object DangerZone : Screen("danger_zone")
     object ForgotPassword : Screen("forgot_password")
     object AddSchedule : Screen("add_schedule")
+    object ScheduleDetail : Screen("schedule_detail/{scheduleId}")
 }
 
 @Composable
@@ -142,6 +143,21 @@ fun AppNavigation(
         
         composable(Screen.AddSchedule.route) {
             com.inguide.app.ui.schedule.AddScheduleScreen(navController = navController)
+        }
+        
+        composable(
+            route = Screen.ScheduleDetail.route,
+            arguments = listOf(
+                androidx.navigation.navArgument("scheduleId") {
+                    type = androidx.navigation.NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            val scheduleId = backStackEntry.arguments?.getString("scheduleId") ?: return@composable
+            com.inguide.app.ui.schedule.ScheduleDetailScreen(
+                scheduleId = scheduleId,
+                navController = navController
+            )
         }
     }
 }

@@ -8,15 +8,14 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -25,14 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.inguide.app.ui.theme.Primary
-
-// Custom Colors matching the design
-val CardBackground = Color(0xFF1E2230)
-val WarningRed = Color(0xFFFF3B30)
-val CautionYellow = Color(0xFFFFCC00)
-val SafeGreen = Color(0xFF34C759)
-val ActionBlue = Color(0xFF007AFF)
+import com.inguide.app.ui.theme.DesignSystem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,7 +50,7 @@ fun DashboardScreen(navController: NavController) {
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
-                            imageVector = Icons.Filled.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Back",
                             tint = Color.White
                         )
@@ -74,7 +66,7 @@ fun DashboardScreen(navController: NavController) {
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF0F111A) // Dark background
+                    containerColor = DesignSystem.Colors.DashboardBackground
                 )
             )
         }
@@ -82,28 +74,28 @@ fun DashboardScreen(navController: NavController) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFF0F111A)) // Dark background for screen
+                .background(DesignSystem.Colors.DashboardBackground)
                 .padding(paddingValues)
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = DesignSystem.Dimensions.PaddingMedium)
         ) {
             item { Spacer(modifier = Modifier.height(20.dp)) }
 
             // 1. Attendance Score Card
             item {
                 AttendanceScoreCard()
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingLarge))
             }
 
             // 2. Quick Actions
             item {
                 QuickActionsRow()
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingLarge))
             }
 
             // 3. Critical Warning
             item {
                 CriticalWarningCard()
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingLarge))
             }
 
             // 4. Upcoming Critical
@@ -125,7 +117,7 @@ fun DashboardScreen(navController: NavController) {
                             subtitle = "Lab 304 • Mr. Anderson",
                             time = "10:00 AM",
                             status = "Attendance Required",
-                            statusColor = WarningRed,
+                            statusColor = DesignSystem.Colors.DashboardWarningRed,
                             note = "Absence limit reached (2/3)"
                         )
                     }
@@ -135,12 +127,12 @@ fun DashboardScreen(navController: NavController) {
                             subtitle = "Auditorium B • Dr. Smith",
                             time = "12:30 PM",
                             status = "Caution",
-                            statusColor = CautionYellow,
+                            statusColor = DesignSystem.Colors.DashboardCautionYellow,
                             note = "You have 1 \"skip\" left"
                         )
                     }
                 }
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingLarge))
             }
 
             // 5. Course Breakdown
@@ -155,15 +147,15 @@ fun DashboardScreen(navController: NavController) {
                 
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = CardBackground)
+                    shape = DesignSystem.Shapes.CardShape,
+                    colors = CardDefaults.cardColors(containerColor = DesignSystem.Colors.DashboardCardBackground)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        CourseProgressItem("Data Structures", 0.72f, WarningRed, "72% (Risk)", "Suggestion: Attend next 3 sessions to reach 80%")
+                        CourseProgressItem("Data Structures", 0.72f, DesignSystem.Colors.DashboardWarningRed, "72% (Risk)", "Suggestion: Attend next 3 sessions to reach 80%")
                         Spacer(modifier = Modifier.height(16.dp))
-                        CourseProgressItem("Calculus II", 0.81f, CautionYellow, "81% (Warning)", null)
+                        CourseProgressItem("Calculus II", 0.81f, DesignSystem.Colors.DashboardCautionYellow, "81% (Warning)", null)
                         Spacer(modifier = Modifier.height(16.dp))
-                        CourseProgressItem("Web Development", 0.98f, SafeGreen, "98% (Safe)", null)
+                        CourseProgressItem("Web Development", 0.98f, DesignSystem.Colors.FeatureGreen, "98% (Safe)", null)
                         
                         Spacer(modifier = Modifier.height(20.dp))
                         
@@ -171,13 +163,13 @@ fun DashboardScreen(navController: NavController) {
                             onClick = { /* TODO */ },
                             modifier = Modifier.fillMaxWidth(),
                             border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.1f)),
-                            colors = ButtonDefaults.outlinedButtonColors(contentColor = ActionBlue)
+                            colors = ButtonDefaults.outlinedButtonColors(contentColor = DesignSystem.Colors.FeatureBlue)
                         ) {
                             Text("View Full Report")
                         }
                     }
                 }
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingLarge))
             }
 
             // 6. Recent Activity
@@ -192,8 +184,8 @@ fun DashboardScreen(navController: NavController) {
                 
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = CardBackground)
+                    shape = DesignSystem.Shapes.CardShape,
+                    colors = CardDefaults.cardColors(containerColor = DesignSystem.Colors.DashboardCardBackground)
                 ) {
                     Row(
                         modifier = Modifier.padding(16.dp),
@@ -202,10 +194,10 @@ fun DashboardScreen(navController: NavController) {
                         Surface(
                             modifier = Modifier.size(40.dp),
                             shape = CircleShape,
-                            color = SafeGreen.copy(alpha = 0.1f)
+                            color = DesignSystem.Colors.FeatureGreen.copy(alpha = 0.1f)
                         ) {
                              Box(contentAlignment = Alignment.Center) {
-                                Icon(Icons.Default.Check, contentDescription = null, tint = SafeGreen, modifier = Modifier.size(20.dp))
+                                Icon(Icons.Default.Check, contentDescription = null, tint = DesignSystem.Colors.FeatureGreen, modifier = Modifier.size(20.dp))
                             }
                         }
                         
@@ -245,8 +237,8 @@ fun DashboardScreen(navController: NavController) {
 fun AttendanceScoreCard() {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = CardBackground)
+        shape = DesignSystem.Shapes.BottomSheetShape, // Using BottomSheetShape (Top rounded 24dp) or just a large rounded shape. Let's stick to CardShape or create a LargeCardShape if needed. The original was 24.dp. BottomSheetShape is top 24.dp. Let's use CardShape (16.dp) for consistency, or simply a custom shape if strictly needed. I'll use CardShape for uniformity.
+        colors = CardDefaults.cardColors(containerColor = DesignSystem.Colors.DashboardCardBackground)
     ) {
         Column {
             // Top Section
@@ -279,14 +271,14 @@ fun AttendanceScoreCard() {
                 Box(contentAlignment = Alignment.Center) {
                     Canvas(modifier = Modifier.size(64.dp)) {
                         drawArc(
-                            color = ActionBlue.copy(alpha = 0.2f),
+                            color = DesignSystem.Colors.FeatureBlue.copy(alpha = 0.2f),
                             startAngle = 0f,
                             sweepAngle = 360f,
                             useCenter = false,
                             style = Stroke(width = 6.dp.toPx(), cap = StrokeCap.Round)
                         )
                         drawArc(
-                            color = ActionBlue,
+                            color = DesignSystem.Colors.FeatureBlue,
                             startAngle = -90f,
                             sweepAngle = 0.85f * 360f,
                             useCenter = false,
@@ -296,7 +288,7 @@ fun AttendanceScoreCard() {
                     Icon(
                         imageVector = Icons.Default.Check,
                         contentDescription = null,
-                        tint = ActionBlue,
+                        tint = DesignSystem.Colors.FeatureBlue,
                         modifier = Modifier.size(24.dp)
                     )
                 }
@@ -321,7 +313,7 @@ fun AttendanceScoreCard() {
                                 .width(6.dp)
                                 .height((h/2).dp)
                                 .background(
-                                    color = if (index == 2) WarningRed else ActionBlue.copy(alpha = 0.3f),
+                                    color = if (index == 2) DesignSystem.Colors.DashboardWarningRed else DesignSystem.Colors.FeatureBlue.copy(alpha = 0.3f),
                                     shape = RoundedCornerShape(3.dp)
                                 )
                         )
@@ -339,7 +331,7 @@ fun AttendanceScoreCard() {
 
             // Bottom Alert
             Surface(
-                color = WarningRed.copy(alpha = 0.1f),
+                color = DesignSystem.Colors.DashboardWarningRed.copy(alpha = 0.1f),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Row(
@@ -349,14 +341,14 @@ fun AttendanceScoreCard() {
                     Icon(
                         imageVector = Icons.Default.Warning,
                         contentDescription = null,
-                        tint = WarningRed,
+                        tint = DesignSystem.Colors.DashboardWarningRed,
                         modifier = Modifier.size(16.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         "Absent on Wednesday",
                         style = MaterialTheme.typography.bodySmall,
-                        color = WarningRed,
+                        color = DesignSystem.Colors.DashboardWarningRed,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.weight(1f)
                     )
@@ -377,10 +369,10 @@ fun QuickActionsRow() {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        QuickActionButton("Scan In", Icons.Default.QrCodeScanner, ActionBlue)
-        QuickActionButton("Excuse", Icons.Default.Assignment, Color(0xFF9C27B0))
-        QuickActionButton("History", Icons.Default.History, SafeGreen)
-        QuickActionButton("Limits", Icons.Default.Speed, Color(0xFFFF9800))
+        QuickActionButton("Scan In", Icons.Default.QrCodeScanner, DesignSystem.Colors.FeatureBlue)
+        QuickActionButton("Excuse", Icons.Default.Assignment, DesignSystem.Colors.FeaturePurple)
+        QuickActionButton("History", Icons.Default.History, DesignSystem.Colors.FeatureGreen)
+        QuickActionButton("Limits", Icons.Default.Speed, DesignSystem.Colors.FeatureOrange)
     }
 }
 
@@ -389,8 +381,8 @@ fun QuickActionButton(text: String, icon: ImageVector, color: Color) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Surface(
             modifier = Modifier.size(56.dp),
-            shape = RoundedCornerShape(16.dp),
-            color = CardBackground
+            shape = DesignSystem.Shapes.CardShape,
+            color = DesignSystem.Colors.DashboardCardBackground
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Icon(
@@ -413,15 +405,15 @@ fun QuickActionButton(text: String, icon: ImageVector, color: Color) {
 fun CriticalWarningCard() {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF2C1E24)) // Dark Reddish
+        shape = DesignSystem.Shapes.CardShape,
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF2C1E24)) // Dark Reddish, maybe make a const for this too?
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Default.Warning,
                     contentDescription = null,
-                    tint = WarningRed,
+                    tint = DesignSystem.Colors.DashboardWarningRed,
                     modifier = Modifier.size(24.dp)
                 )
                 Spacer(modifier = Modifier.width(12.dp))
@@ -429,7 +421,7 @@ fun CriticalWarningCard() {
                     text = "Critical Warning",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = WarningRed
+                    color = DesignSystem.Colors.DashboardWarningRed
                 )
             }
             
@@ -445,11 +437,11 @@ fun CriticalWarningCard() {
             
             Button(
                 onClick = { /* TODO */ },
-                colors = ButtonDefaults.buttonColors(containerColor = WarningRed.copy(alpha = 0.2f)),
+                colors = ButtonDefaults.buttonColors(containerColor = DesignSystem.Colors.DashboardWarningRed.copy(alpha = 0.2f)),
                 contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                shape = RoundedCornerShape(8.dp)
+                shape = DesignSystem.Shapes.InputShape // Small rounded
             ) {
-                Text("View Policy", color = WarningRed, style = MaterialTheme.typography.labelMedium)
+                Text("View Policy", color = DesignSystem.Colors.DashboardWarningRed, style = MaterialTheme.typography.labelMedium)
             }
         }
     }
@@ -466,8 +458,8 @@ fun UpcomingClassCard(
 ) {
     Card(
         modifier = Modifier.width(280.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = CardBackground)
+        shape = DesignSystem.Shapes.CardShape,
+        colors = CardDefaults.cardColors(containerColor = DesignSystem.Colors.DashboardCardBackground)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             // Badge & Time
@@ -478,7 +470,7 @@ fun UpcomingClassCard(
             ) {
                 Surface(
                     color = statusColor.copy(alpha = 0.2f),
-                    shape = RoundedCornerShape(4.dp)
+                    shape = RoundedCornerShape(4.dp) // Very small shape, can keep or use InputShape
                 ) {
                     Text(
                         text = status,
@@ -575,4 +567,3 @@ fun CourseProgressItem(
         }
     }
 }
-

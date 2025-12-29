@@ -82,7 +82,16 @@ fun AppNavigation(
             )
         }
         
-        composable(Screen.Main.route) {
+        composable(
+            route = "${Screen.Main.route}?tab={tab}",
+            arguments = listOf(
+                androidx.navigation.navArgument("tab") {
+                    type = androidx.navigation.NavType.IntType
+                    defaultValue = 0
+                }
+            )
+        ) { backStackEntry ->
+            val tab = backStackEntry.arguments?.getInt("tab") ?: 0
             MainScreen(
                 navController = navController,
                 isDarkTheme = isDarkTheme,
@@ -92,7 +101,8 @@ fun AppNavigation(
                     navController.navigate(Screen.Login.route) {
                         popUpTo(Screen.Main.route) { inclusive = true }
                     }
-                }
+                },
+                initialTab = tab
             )
         }
         

@@ -1,5 +1,6 @@
 package com.inguide.app.ui.auth
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,12 +19,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import com.inguide.app.ui.theme.Primary
-import com.inguide.app.ui.theme.PrimaryDark
+import com.inguide.app.ui.theme.DesignSystem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
-import androidx.compose.foundation.BorderStroke
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -49,7 +47,7 @@ fun LoginScreen(
                 onClick = onThemeToggle,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(16.dp)
+                    .padding(DesignSystem.Dimensions.PaddingMedium)
             ) {
                 Icon(
                     imageVector = if (isDarkTheme) Icons.Outlined.LightMode else Icons.Outlined.DarkMode,
@@ -61,7 +59,7 @@ fun LoginScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 24.dp), // CSS p-6 = 24dp
+                    .padding(horizontal = DesignSystem.Dimensions.PaddingLarge),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
@@ -69,10 +67,10 @@ fun LoginScreen(
             Surface(
                 modifier = Modifier.size(80.dp),
                 shape = RoundedCornerShape(40.dp),
-                color = Primary.copy(alpha = 0.1f),
+                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
                 border = BorderStroke(
                     width = 1.dp,
-                    color = Primary.copy(alpha = 0.2f)
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
                 )
             ) {
                 Box(contentAlignment = Alignment.Center) {
@@ -80,7 +78,7 @@ fun LoginScreen(
                         imageVector = Icons.Outlined.Email,
                         contentDescription = null,
                         modifier = Modifier.size(32.dp),
-                        tint = Primary
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             }
@@ -96,7 +94,7 @@ fun LoginScreen(
                 color = MaterialTheme.colorScheme.onBackground
             )
             
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingSmall))
             
             Text(
                 text = "Sign in to access your campus",
@@ -117,16 +115,16 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = DesignSystem.Shapes.InputShape,
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    focusedBorderColor = Primary,
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                 )
             )
             
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingMedium))
             
             // Password Field
             OutlinedTextField(
@@ -140,16 +138,16 @@ fun LoginScreen(
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = DesignSystem.Shapes.InputShape,
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    focusedBorderColor = Primary,
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                 )
             )
             
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingSmall))
             
             // Forgot Password
             Box(
@@ -159,11 +157,11 @@ fun LoginScreen(
                 TextButton(
                     onClick = onNavigateToForgotPassword
                 ) {
-                    Text("Forgot Password?", color = Primary)
+                    Text("Forgot Password?", color = MaterialTheme.colorScheme.primary)
                 }
             }
             
-            Spacer(modifier = Modifier.height(24.dp)) // CSS: pt-2 + mt-4 approx
+            Spacer(modifier = Modifier.height(24.dp))
             
             // Login Button
             Button(
@@ -182,10 +180,10 @@ fun LoginScreen(
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(56.dp), // CSS py-4 approx 56dp
-                shape = RoundedCornerShape(12.dp),
+                    .height(56.dp),
+                shape = DesignSystem.Shapes.ButtonShape,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Primary
+                    containerColor = MaterialTheme.colorScheme.primary
                 ),
                 enabled = !isLoading,
                 elevation = ButtonDefaults.buttonElevation(
@@ -196,7 +194,7 @@ fun LoginScreen(
                 Text(
                     text = if (isLoading) "Signing in..." else "Sign In",
                     style = MaterialTheme.typography.titleMedium,
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             }
             
@@ -212,9 +210,9 @@ fun LoginScreen(
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(DesignSystem.Dimensions.PaddingSmall))
                 TextButton(onClick = onNavigateToRegister) {
-                    Text("Register", color = Primary, style = MaterialTheme.typography.titleSmall)
+                    Text("Register", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.titleSmall)
                 }
             }
             }

@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -21,9 +20,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.inguide.app.data.ScheduleDataStore
 import com.inguide.app.data.model.ScheduleItem
-import com.inguide.app.ui.theme.Primary
+import com.inguide.app.ui.theme.DesignSystem
 import kotlinx.coroutines.launch
 import java.util.UUID
+import com.inguide.app.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,7 +59,9 @@ fun AddScheduleScreen(
             TopAppBar(
                 title = { Text("Add Class") },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { navController.navigate("${Screen.Main.route}?tab=2") {
+                        popUpTo(Screen.Main.route) { inclusive = true }
+                    }}) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },
@@ -86,7 +88,7 @@ fun AddScheduleScreen(
                 onValueChange = { title = it },
                 label = { Text("Class Name (e.g. CS 101)") },
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(12.dp)
+                shape = DesignSystem.Shapes.InputShape
             )
             
             // Room Input
@@ -95,7 +97,7 @@ fun AddScheduleScreen(
                 onValueChange = { room = it },
                 label = { Text("Room / Location") },
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(12.dp)
+                shape = DesignSystem.Shapes.InputShape
             )
             
             // Type Selection
@@ -129,7 +131,7 @@ fun AddScheduleScreen(
                     label = { Text("Day") },
                     trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = showDayDropdown) },
                     modifier = Modifier.fillMaxWidth().menuAnchor(),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.InputShape
                 )
                 ExposedDropdownMenu(
                     expanded = showDayDropdown,
@@ -157,14 +159,14 @@ fun AddScheduleScreen(
                     onValueChange = { startTime = it },
                     label = { Text("Start (HH:MM)") },
                     modifier = Modifier.weight(1f),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.InputShape
                 )
                 OutlinedTextField(
                     value = endTime,
                     onValueChange = { endTime = it },
                     label = { Text("End (HH:MM)") },
                     modifier = Modifier.weight(1f),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.InputShape
                 )
             }
             
@@ -214,15 +216,17 @@ fun AddScheduleScreen(
                                 color = selectedColor
                             )
                             scheduleDataStore.add(newItem)
-                            navController.popBackStack()
+                            navController.navigate("${Screen.Main.route}?tab=2") {
+                                popUpTo(Screen.Main.route) { inclusive = true }
+                            }
                         }
                     }
                 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Primary)
+                shape = DesignSystem.Shapes.ButtonShape,
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
             ) {
                 Text("Save Class", fontWeight = FontWeight.Bold)
             }

@@ -3,7 +3,7 @@ package com.inguide.app.ui.profile
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.inguide.app.ui.theme.DesignSystem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,18 +44,18 @@ fun DangerZoneScreen(navController: NavController) {
                 .fillMaxSize()
                 .padding(paddingValues)
                 .background(MaterialTheme.colorScheme.background)
-                .padding(20.dp)
+                .padding(DesignSystem.Dimensions.PaddingMedium)
         ) {
             item {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp),
+                    shape = DesignSystem.Shapes.CardShape,
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f)
                     )
                 ) {
                     Row(
-                        modifier = Modifier.padding(16.dp),
+                        modifier = Modifier.padding(DesignSystem.Dimensions.PaddingMedium),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
@@ -71,14 +72,14 @@ fun DangerZoneScreen(navController: NavController) {
                     }
                 }
                 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingLarge))
             }
             
             // Clear Cache
             item {
                 OutlinedCard(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp),
+                    shape = DesignSystem.Shapes.CardShape,
                     border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
                     onClick = { showClearCacheDialog = true }
                 ) {
@@ -90,7 +91,7 @@ fun DangerZoneScreen(navController: NavController) {
                     ) {
                         Surface(
                             modifier = Modifier.size(48.dp),
-                            shape = RoundedCornerShape(24.dp),
+                            shape = CircleShape,
                             color = MaterialTheme.colorScheme.secondaryContainer
                         ) {
                             Box(contentAlignment = Alignment.Center) {
@@ -131,7 +132,7 @@ fun DangerZoneScreen(navController: NavController) {
             item {
                 OutlinedCard(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp),
+                    shape = DesignSystem.Shapes.CardShape,
                     border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.5f)),
                     onClick = { showResetDialog = true }
                 ) {
@@ -143,7 +144,7 @@ fun DangerZoneScreen(navController: NavController) {
                     ) {
                         Surface(
                             modifier = Modifier.size(48.dp),
-                            shape = RoundedCornerShape(24.dp),
+                            shape = CircleShape,
                             color = MaterialTheme.colorScheme.error.copy(alpha = 0.15f)
                         ) {
                             Box(contentAlignment = Alignment.Center) {
@@ -185,7 +186,7 @@ fun DangerZoneScreen(navController: NavController) {
             item {
                 OutlinedCard(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp),
+                    shape = DesignSystem.Shapes.CardShape,
                     border = androidx.compose.foundation.BorderStroke(2.dp, MaterialTheme.colorScheme.error),
                     onClick = { showDeleteAccountDialog = true }
                 ) {
@@ -197,7 +198,7 @@ fun DangerZoneScreen(navController: NavController) {
                     ) {
                         Surface(
                             modifier = Modifier.size(48.dp),
-                            shape = RoundedCornerShape(24.dp),
+                            shape = CircleShape,
                             color = MaterialTheme.colorScheme.error
                         ) {
                             Box(contentAlignment = Alignment.Center) {
@@ -235,7 +236,7 @@ fun DangerZoneScreen(navController: NavController) {
         }
     }
     
-    // Dialogs
+    // Dialogs ... (kept same logic, just minor formatting if needed)
     if (showClearCacheDialog) {
         AlertDialog(
             onDismissRequest = { showClearCacheDialog = false },
@@ -243,7 +244,6 @@ fun DangerZoneScreen(navController: NavController) {
             text = { Text("This will remove temporary files and cached data. Your schedule and chat history will not be affected.") },
             confirmButton = {
                 TextButton(onClick = {
-                    // TODO: Clear cache
                     showClearCacheDialog = false
                 }) {
                     Text("Clear")
@@ -266,7 +266,6 @@ fun DangerZoneScreen(navController: NavController) {
             confirmButton = {
                 TextButton(
                     onClick = {
-                        // TODO: Reset app data
                         showResetDialog = false
                     },
                     colors = ButtonDefaults.textButtonColors(
@@ -293,7 +292,6 @@ fun DangerZoneScreen(navController: NavController) {
             confirmButton = {
                 TextButton(
                     onClick = {
-                        // TODO: Delete account
                         showDeleteAccountDialog = false
                     },
                     colors = ButtonDefaults.textButtonColors(

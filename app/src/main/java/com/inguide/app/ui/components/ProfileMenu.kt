@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 import androidx.navigation.NavController
-import com.inguide.app.ui.theme.*
+import com.inguide.app.ui.theme.DesignSystem
 
 @Composable
 fun ProfileMenu(
@@ -50,14 +50,14 @@ fun ProfileMenu(
                     modifier = Modifier
                         .padding(top = 80.dp, end = 20.dp)
                         .width(280.dp),
-                    shape = RoundedCornerShape(20.dp),
+                    shape = DesignSystem.Shapes.CardShape, // Was 20.dp, using CardShape (16.dp) for consistency or custom if needed
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceVariant
                     ),
                     elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
                 ) {
                     Column(
-                        modifier = Modifier.padding(16.dp)
+                        modifier = Modifier.padding(DesignSystem.Dimensions.PaddingMedium)
                     ) {
                         // Header
                         Row(
@@ -67,12 +67,12 @@ fun ProfileMenu(
                             Surface(
                                 modifier = Modifier.size(40.dp),
                                 shape = CircleShape,
-                                color = Primary
+                                color = MaterialTheme.colorScheme.primary
                             ) {
                                 Box(contentAlignment = Alignment.Center) {
                                     Text(
                                         text = "JP",
-                                        color = Color.White,
+                                        color = MaterialTheme.colorScheme.onPrimary,
                                         fontWeight = FontWeight.Bold
                                     )
                                 }
@@ -135,7 +135,7 @@ fun ProfileMenu(
                                 onCheckedChange = { onThemeToggle() },
                                 colors = SwitchDefaults.colors(
                                     checkedThumbColor = Color.White,
-                                    checkedTrackColor = Primary
+                                    checkedTrackColor = MaterialTheme.colorScheme.primary
                                 )
                             )
                         }
@@ -143,16 +143,16 @@ fun ProfileMenu(
                         MenuItem(
                             icon = Icons.Outlined.Warning,
                             text = "Danger Zone",
-                            textColor = Error,
-                            iconColor = Error,
+                            textColor = MaterialTheme.colorScheme.error,
+                            iconColor = MaterialTheme.colorScheme.error,
                             onClick = { navController.navigate("danger_zone"); onDismiss() }
                         )
                         
                         MenuItem(
                             icon = Icons.Outlined.Logout,
                             text = "Logout",
-                            textColor = Error,
-                            iconColor = Error,
+                            textColor = MaterialTheme.colorScheme.error,
+                            iconColor = MaterialTheme.colorScheme.error,
                             onClick = { onLogout(); onDismiss() }
                         )
                     }

@@ -31,9 +31,10 @@ fun MainScreen(
     navController: NavController,
     isDarkTheme: Boolean,
     onThemeToggle: () -> Unit,
-    onLogout: () -> Unit
+    onLogout: () -> Unit,
+    initialTab: Int = 0
 ) {
-    var selectedTab by remember { mutableStateOf(0) }
+    var selectedTab by remember { mutableStateOf(initialTab) }
     val items = listOf(
         BottomNavItem.Home,
         BottomNavItem.Map,

@@ -11,12 +11,13 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.inguide.app.ui.theme.DesignSystem
 
 @Composable
 fun GradientCard(
     modifier: Modifier = Modifier,
     gradientColors: List<Color>,
-    cornerRadius: Dp = 16.dp,
+    cornerRadius: Dp = DesignSystem.Shapes.CardCornerRadius,
     elevation: Dp = 4.dp,
     content: @Composable ColumnScope.() -> Unit
 ) {

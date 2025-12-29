@@ -3,15 +3,15 @@ package com.inguide.app.ui.profile
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.ChevronLeft
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.inguide.app.ui.theme.DesignSystem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,7 +38,7 @@ fun NotificationsScreen(navController: NavController) {
                 .fillMaxSize()
                 .padding(paddingValues)
                 .background(MaterialTheme.colorScheme.background)
-                .padding(20.dp)
+                .padding(DesignSystem.Dimensions.PaddingMedium)
         ) {
             item {
                 Text(
@@ -52,7 +52,7 @@ fun NotificationsScreen(navController: NavController) {
             item {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.CardShape
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Row(
@@ -110,7 +110,7 @@ fun NotificationsScreen(navController: NavController) {
             item {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.CardShape
                 ) {
                     Row(
                         modifier = Modifier
@@ -144,7 +144,7 @@ fun NotificationsScreen(navController: NavController) {
             item {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.CardShape
                 ) {
                     Row(
                         modifier = Modifier

@@ -27,12 +27,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.inguide.app.data.ChatDataStore
 import com.inguide.app.data.model.Chat
 import com.inguide.app.data.model.Message
-import com.inguide.app.ui.theme.Primary
+import com.inguide.app.ui.theme.DesignSystem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -226,7 +225,7 @@ fun ChatTopBar(
                     Box(
                         modifier = Modifier
                             .size(8.dp)
-                            .background(Color.Green, CircleShape)
+                            .background(DesignSystem.Colors.FeatureGreen, CircleShape)
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
@@ -272,7 +271,8 @@ fun ChatHistoryDrawer(
         Button(
             onClick = onNewChat,
             modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(containerColor = Primary)
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
+            shape = DesignSystem.Shapes.ButtonShape
         ) {
             Icon(Icons.Default.Add, contentDescription = null)
             Spacer(modifier = Modifier.width(8.dp))
@@ -300,8 +300,8 @@ fun ChatHistoryDrawer(
                     onClick = { onChatSelected(chat) },
                     shape = RoundedCornerShape(8.dp),
                     colors = NavigationDrawerItemDefaults.colors(
-                        selectedContainerColor = Primary.copy(alpha = 0.1f),
-                        selectedTextColor = Primary
+                        selectedContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
+                        selectedTextColor = MaterialTheme.colorScheme.primary
                     )
                 )
             }
@@ -321,14 +321,14 @@ fun EmptyChatState() {
         Surface(
             modifier = Modifier.size(80.dp),
             shape = RoundedCornerShape(20.dp),
-            color = Primary.copy(alpha = 0.1f)
+            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Icon(
                     imageVector = Icons.Default.Info, // Placeholder for Bot Icon
                     contentDescription = null,
                     modifier = Modifier.size(40.dp),
-                    tint = Primary
+                    tint = MaterialTheme.colorScheme.primary
                 )
             }
         }
@@ -391,13 +391,13 @@ fun MessageBubble(message: Message) {
                 RoundedCornerShape(20.dp, 20.dp, 4.dp, 20.dp)
             else 
                 RoundedCornerShape(20.dp, 20.dp, 20.dp, 4.dp),
-            color = if (isUser) Primary else MaterialTheme.colorScheme.surfaceVariant,
+            color = if (isUser) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
             modifier = Modifier.widthIn(max = 300.dp)
         ) {
             Text(
                 text = message.content,
                 modifier = Modifier.padding(16.dp),
-                color = if (isUser) Color.White else MaterialTheme.colorScheme.onSurfaceVariant
+                color = if (isUser) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
         
@@ -453,7 +453,7 @@ fun ChatInputArea(
                 IconButton(
                     onClick = onSend,
                     modifier = Modifier
-                        .background(Primary, CircleShape)
+                        .background(MaterialTheme.colorScheme.primary, CircleShape)
                         .size(48.dp)
                 ) {
                     Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Send", tint = Color.White)

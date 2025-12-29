@@ -7,43 +7,38 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val LightColorScheme = lightColorScheme(
-    primary = Primary,
-    secondary = Secondary,
-    tertiary = Success,
-    error = Error,
-    background = BackgroundLight,
-    surface = SurfaceLight,
-    onPrimary = Color(0xFFFFFFFF),
-    onSecondary = Color(0xFFFFFFFF),
-    onTertiary = Color(0xFFFFFFFF),
-    onError = Color(0xFFFFFFFF),
-    onBackground = TextLight,
-    onSurface = TextLight,
-    surfaceVariant = CardBackgroundLight,
-    outline = BorderLight
+    primary = DesignSystem.Colors.Light.primary,
+    secondary = DesignSystem.Colors.Light.secondary,
+    tertiary = DesignSystem.Colors.Light.tertiary,
+    background = DesignSystem.Colors.Light.background,
+    surface = DesignSystem.Colors.Light.surface,
+    surfaceVariant = DesignSystem.Colors.Light.surfaceVariant,
+    onPrimary = DesignSystem.Colors.Light.onPrimary,
+    onSecondary = DesignSystem.Colors.Light.onSecondary,
+    onBackground = DesignSystem.Colors.Light.onBackground,
+    onSurface = DesignSystem.Colors.Light.onSurface,
+    outline = DesignSystem.Colors.Light.outline, // Custom mapping if needed, though Maps to outline variant often
+    error = DesignSystem.Colors.Light.error
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Primary,
-    secondary = Secondary,
-    tertiary = Success,
-    error = Error,
-    background = BackgroundDark,
-    surface = SurfaceDark,
-    onPrimary = Color(0xFFFFFFFF),
-    onSecondary = Color(0xFFFFFFFF),
-    onTertiary = Color(0xFFFFFFFF),
-    onError = Color(0xFFFFFFFF),
-    onBackground = TextDark,
-    onSurface = TextDark,
-    surfaceVariant = CardBackgroundDark,
-    outline = BorderDark
+    primary = DesignSystem.Colors.Dark.primary,
+    secondary = DesignSystem.Colors.Dark.secondary,
+    tertiary = DesignSystem.Colors.Dark.tertiary,
+    background = DesignSystem.Colors.Dark.background,
+    surface = DesignSystem.Colors.Dark.surface,
+    surfaceVariant = DesignSystem.Colors.Dark.surfaceVariant,
+    onPrimary = DesignSystem.Colors.Dark.onPrimary,
+    onSecondary = DesignSystem.Colors.Dark.onSecondary,
+    onBackground = DesignSystem.Colors.Dark.onBackground,
+    onSurface = DesignSystem.Colors.Dark.onSurface,
+    outline = DesignSystem.Colors.Dark.outline,
+    error = DesignSystem.Colors.Dark.error
 )
 
 @Composable
@@ -64,7 +59,16 @@ fun InGuideTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = DesignSystem.Typography.Default,
+        // We can also apply shapes here if we define them in MaterialTheme
+        // shapes = MaterialTheme.shapes.copy(...) 
+        // But for now we just use DesignSystem.Shapes directly in components or map here if desired.
+        // Let's map small/medium/large to our shapes for better integration.
+        shapes = MaterialTheme.shapes.copy(
+            small = DesignSystem.Shapes.InputShape,
+            medium = DesignSystem.Shapes.CardShape,
+            large = DesignSystem.Shapes.BottomSheetShape
+        ),
         content = content
     )
 }

@@ -1,5 +1,6 @@
 package com.inguide.app.ui.auth
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,11 +18,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import com.inguide.app.ui.theme.Primary
+import com.inguide.app.ui.theme.DesignSystem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
-import androidx.compose.foundation.BorderStroke
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,7 +42,7 @@ fun RegisterScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 24.dp),
+                .padding(horizontal = DesignSystem.Dimensions.PaddingLarge),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -51,10 +50,10 @@ fun RegisterScreen(
             Surface(
                 modifier = Modifier.size(80.dp),
                 shape = RoundedCornerShape(40.dp),
-                color = Primary.copy(alpha = 0.1f),
+                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
                 border = BorderStroke(
                     width = 1.dp,
-                    color = Primary.copy(alpha = 0.2f)
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
                 )
             ) {
                 Box(contentAlignment = Alignment.Center) {
@@ -62,7 +61,7 @@ fun RegisterScreen(
                         imageVector = Icons.Outlined.Person,
                         contentDescription = null,
                         modifier = Modifier.size(32.dp),
-                        tint = Primary
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             }
@@ -77,7 +76,7 @@ fun RegisterScreen(
                 color = MaterialTheme.colorScheme.onBackground
             )
             
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingSmall))
             
             Text(
                 text = "Join InGuide today",
@@ -97,16 +96,16 @@ fun RegisterScreen(
                 },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = DesignSystem.Shapes.InputShape,
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    focusedBorderColor = Primary,
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                 )
             )
             
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingMedium))
             
             // Email Field
             OutlinedTextField(
@@ -119,16 +118,16 @@ fun RegisterScreen(
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = DesignSystem.Shapes.InputShape,
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    focusedBorderColor = Primary,
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                 )
             )
             
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingMedium))
             
             // Password Field
             OutlinedTextField(
@@ -142,16 +141,16 @@ fun RegisterScreen(
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = DesignSystem.Shapes.InputShape,
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    focusedBorderColor = Primary,
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                 )
             )
             
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(DesignSystem.Dimensions.PaddingMedium))
             
             // Confirm Password Field
             OutlinedTextField(
@@ -165,11 +164,11 @@ fun RegisterScreen(
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = DesignSystem.Shapes.InputShape,
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    focusedBorderColor = Primary,
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                 )
             )
@@ -189,9 +188,9 @@ fun RegisterScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
-                shape = RoundedCornerShape(12.dp),
+                shape = DesignSystem.Shapes.ButtonShape,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Primary
+                    containerColor = MaterialTheme.colorScheme.primary
                 ),
                 enabled = !isLoading,
                 elevation = ButtonDefaults.buttonElevation(
@@ -218,9 +217,9 @@ fun RegisterScreen(
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(DesignSystem.Dimensions.PaddingSmall))
                 TextButton(onClick = onNavigateToLogin) {
-                    Text("Sign In", color = Primary, style = MaterialTheme.typography.titleSmall)
+                    Text("Sign In", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.titleSmall)
                 }
             }
         }

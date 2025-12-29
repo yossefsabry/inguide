@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.inguide.app.navigation.Screen
-import com.inguide.app.ui.theme.Primary
+import com.inguide.app.ui.theme.DesignSystem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -82,13 +82,13 @@ fun ProfileScreen(
                     Surface(
                         modifier = Modifier.size(100.dp),
                         shape = CircleShape,
-                        color = Primary
+                        color = MaterialTheme.colorScheme.primary
                     ) {
                         Box(contentAlignment = Alignment.Center) {
                             Text(
                                 text = initials,
                                 style = MaterialTheme.typography.displayMedium,
-                                color = Color.White
+                                color = MaterialTheme.colorScheme.onPrimary
                             )
                         }
                     }
@@ -100,14 +100,14 @@ fun ProfileScreen(
                             .align(Alignment.BottomEnd)
                             .offset(x = 0.dp, y = 0.dp),
                         shape = CircleShape,
-                        color = Primary,
+                        color = MaterialTheme.colorScheme.primary,
                         border = androidx.compose.foundation.BorderStroke(2.dp, MaterialTheme.colorScheme.background)
                     ) {
                         Box(contentAlignment = Alignment.Center) {
                              Icon(
                                 imageVector = Icons.Filled.Edit,
                                 contentDescription = "Edit Avatar",
-                                tint = Color.White,
+                                tint = MaterialTheme.colorScheme.onPrimary,
                                 modifier = Modifier.size(16.dp)
                             )
                         }
@@ -133,7 +133,7 @@ fun ProfileScreen(
                 // Edit Profile Button
                 OutlinedButton(
                     onClick = { navController.navigate(Screen.EditProfile.route) },
-                    shape = RoundedCornerShape(24.dp),
+                    shape = DesignSystem.Shapes.ButtonShape,
                     modifier = Modifier
                         .fillMaxWidth(0.6f)
                         .height(40.dp),
@@ -195,7 +195,7 @@ fun ProfileScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 6.dp),
-                    shape = RoundedCornerShape(12.dp),
+                    shape = DesignSystem.Shapes.InputShape,
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
                     )
@@ -222,7 +222,13 @@ fun ProfileScreen(
                         Switch(
                             checked = isDarkTheme,
                             onCheckedChange = { onThemeToggle() },
-                            modifier = Modifier.scale(0.8f)
+                            modifier = Modifier.scale(0.8f),
+                            colors = SwitchDefaults.colors(
+                                checkedThumbColor = Color.White,
+                                checkedTrackColor = MaterialTheme.colorScheme.primary,
+                                uncheckedThumbColor = Color.White,
+                                uncheckedTrackColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
+                            )
                         )
                     }
                 }
@@ -244,7 +250,7 @@ fun ProfileScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
-                    shape = RoundedCornerShape(12.dp),
+                    shape = DesignSystem.Shapes.ButtonShape,
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
                         contentColor = MaterialTheme.colorScheme.error
@@ -293,7 +299,7 @@ fun ProfileMenuItem(
             .fillMaxWidth()
             .padding(vertical = 6.dp)
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(12.dp),
+        shape = DesignSystem.Shapes.InputShape,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
         )
@@ -341,4 +347,3 @@ fun ProfileMenuItem(
         }
     }
 }
-

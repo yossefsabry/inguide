@@ -30,7 +30,7 @@ import com.inguide.app.data.DataStoreManager
 import com.inguide.app.data.ScheduleDataStore
 import com.inguide.app.data.model.ScheduleItem
 import com.inguide.app.ui.components.*
-import com.inguide.app.ui.theme.*
+import com.inguide.app.ui.theme.DesignSystem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -74,8 +74,6 @@ fun HomeScreen(
             isLoading = false
         }
     }
-    
-
     
     ProfileMenu(
         visible = showProfileMenu,
@@ -126,7 +124,7 @@ fun HomeScreen(
                                 .size(40.dp)
                                 .clickable { showProfileMenu = true }, // Show Menu
                             shape = CircleShape,
-                            color = Primary
+                            color = MaterialTheme.colorScheme.primary
                             // In real app, use Image
                         ) {
                             Box(contentAlignment = Alignment.Center) {
@@ -147,7 +145,7 @@ fun HomeScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp),
-                    shape = RoundedCornerShape(12.dp),
+                    shape = DesignSystem.Shapes.InputShape,
                     color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
                 ) {
                     Row(
@@ -197,7 +195,7 @@ fun HomeScreen(
                         QuickAccessButton(
                             title = "Nearby",
                             icon = Icons.Filled.Place,
-                            color = Color(0xFF34C759), // Green
+                            color = DesignSystem.Colors.FeatureGreen,
                             modifier = Modifier.weight(1f),
                             onClick = { onNavigateToTab(1) } // Map
                         )
@@ -205,7 +203,7 @@ fun HomeScreen(
                         QuickAccessButton(
                             title = "AR View",
                             icon = Icons.Filled.ViewInAr,
-                            color = Color(0xFFAF52DE), // Purple
+                            color = DesignSystem.Colors.FeaturePurple,
                             modifier = Modifier.weight(1f),
                             onClick = { onNavigateToTab(1) } // Map
                         )
@@ -218,7 +216,7 @@ fun HomeScreen(
                         QuickAccessButton(
                             title = "Schedule",
                             icon = Icons.Outlined.CalendarMonth,
-                            color = Color(0xFFFF9500), // Orange
+                            color = DesignSystem.Colors.FeatureOrange,
                             modifier = Modifier.weight(1f),
                             onClick = { onNavigateToTab(2) } // Schedule
                         )
@@ -226,7 +224,7 @@ fun HomeScreen(
                         QuickAccessButton(
                             title = "Chaty",
                             icon = Icons.Outlined.Chat,
-                            color = Color(0xFF007AFF), // Blue
+                            color = DesignSystem.Colors.FeatureBlue,
                             modifier = Modifier.weight(1f),
                             onClick = { onNavigateToTab(3) } // Chat
                         )
@@ -254,7 +252,7 @@ fun HomeScreen(
                             color = MaterialTheme.colorScheme.onBackground
                         )
                         TextButton(onClick = { onNavigateToTab(2) }) {
-                            Text("See All", color = Primary)
+                            Text("See All", color = MaterialTheme.colorScheme.primary)
                         }
                     }
                     
@@ -319,7 +317,7 @@ fun QuickAccessButton(
         modifier = modifier
             .height(160.dp)
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(24.dp),
+        shape = DesignSystem.Shapes.BottomSheetShape, // Using BottomSheetShape (24.dp) which matches original 24.dp
         color = MaterialTheme.colorScheme.surface, // Use surface color which adapts to dark/light
         shadowElevation = 2.dp
     ) {
@@ -382,7 +380,7 @@ private fun LoadingScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 20.dp, vertical = 8.dp)
                         .height(100.dp),
-                    shimmerColor = if (isDarkTheme) ShimmerDark else ShimmerLight
+                    shimmerColor = if (isDarkTheme) DesignSystem.Colors.ShimmerDark else DesignSystem.Colors.ShimmerLight
                 )
             }
         }
@@ -432,7 +430,7 @@ private fun ScheduleItemCard(
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
+        shape = DesignSystem.Shapes.InputShape,
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Row(
@@ -462,12 +460,12 @@ private fun ScheduleItemCard(
             }
             Surface(
                 shape = RoundedCornerShape(8.dp),
-                color = Primary.copy(alpha = 0.1f)
+                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
             ) {
                 Text(
                     text = item.type.uppercase(),
                     style = MaterialTheme.typography.labelSmall,
-                    color = Primary,
+                    color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                 )
             }
@@ -485,7 +483,7 @@ private fun TopPlaceListItem(
             .fillMaxWidth()
             .padding(horizontal = 24.dp, vertical = 6.dp)
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(16.dp),
+        shape = DesignSystem.Shapes.CardShape,
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Row(
@@ -496,14 +494,14 @@ private fun TopPlaceListItem(
         ) {
             Surface(
                 modifier = Modifier.size(48.dp),
-                shape = RoundedCornerShape(12.dp),
-                color = Primary.copy(alpha = 0.1f) // Light blue background
+                shape = DesignSystem.Shapes.InputShape,
+                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = location.icon,
                         contentDescription = null,
-                        tint = Primary
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             }

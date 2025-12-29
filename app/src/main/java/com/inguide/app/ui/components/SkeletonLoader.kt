@@ -4,7 +4,6 @@ import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
@@ -13,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.inguide.app.ui.theme.DesignSystem
 
 @Composable
 fun SkeletonLoader(
@@ -33,7 +33,7 @@ fun SkeletonLoader(
     Box(
         modifier = modifier
             .alpha(alpha)
-            .background(shimmerColor, RoundedCornerShape(8.dp))
+            .background(shimmerColor, DesignSystem.Shapes.InputShape) // Reuse InputShape (Small rounded)
     )
 }
 
@@ -44,7 +44,7 @@ fun SkeletonCard(
 ) {
     Card(
         modifier = modifier,
-        shape = RoundedCornerShape(16.dp),
+        shape = DesignSystem.Shapes.CardShape,
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(

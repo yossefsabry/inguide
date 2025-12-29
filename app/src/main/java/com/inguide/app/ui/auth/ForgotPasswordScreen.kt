@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.inguide.app.ui.theme.Primary
+import com.inguide.app.ui.theme.DesignSystem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -36,7 +36,7 @@ fun ForgotPasswordScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 24.dp),
+                .padding(horizontal = DesignSystem.Dimensions.PaddingLarge),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -44,10 +44,10 @@ fun ForgotPasswordScreen(
             Surface(
                 modifier = Modifier.size(80.dp),
                 shape = RoundedCornerShape(40.dp),
-                color = Primary.copy(alpha = 0.1f),
+                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
                 border = BorderStroke(
                     width = 1.dp,
-                    color = Primary.copy(alpha = 0.2f)
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
                 )
             ) {
                 Box(contentAlignment = Alignment.Center) {
@@ -55,7 +55,7 @@ fun ForgotPasswordScreen(
                         imageVector = Icons.Outlined.Lock,
                         contentDescription = null,
                         modifier = Modifier.size(32.dp),
-                        tint = Primary
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             }
@@ -84,7 +84,7 @@ fun ForgotPasswordScreen(
             if (isSuccess) {
                 Card(
                     colors = CardDefaults.cardColors(
-                        containerColor = Primary.copy(alpha = 0.1f)
+                        containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
                     ),
                     modifier = Modifier.fillMaxWidth()
                 ) {
@@ -95,7 +95,7 @@ fun ForgotPasswordScreen(
                         Text(
                             text = "Code Sent!",
                             style = MaterialTheme.typography.titleMedium,
-                            color = Primary,
+                            color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(modifier = Modifier.height(4.dp))
@@ -112,8 +112,8 @@ fun ForgotPasswordScreen(
                 Button(
                     onClick = onNavigateBack,
                     modifier = Modifier.fillMaxWidth().height(56.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Primary)
+                    shape = DesignSystem.Shapes.ButtonShape,
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                 ) {
                     Text("Back to Sign In")
                 }
@@ -129,11 +129,11 @@ fun ForgotPasswordScreen(
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     singleLine = true,
-                    shape = RoundedCornerShape(12.dp),
+                    shape = DesignSystem.Shapes.InputShape,
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                        focusedBorderColor = Primary,
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
                         unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                     )
                 )
@@ -153,9 +153,9 @@ fun ForgotPasswordScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
-                    shape = RoundedCornerShape(12.dp),
+                    shape = DesignSystem.Shapes.ButtonShape,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Primary
+                        containerColor = MaterialTheme.colorScheme.primary
                     ),
                     enabled = !isLoading && email.isNotEmpty(),
                     elevation = ButtonDefaults.buttonElevation(

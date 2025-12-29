@@ -17,17 +17,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.inguide.app.data.ScheduleDataStore
 import com.inguide.app.data.model.ScheduleItem
 import com.inguide.app.navigation.Screen
-import com.inguide.app.ui.theme.*
+import com.inguide.app.ui.theme.DesignSystem
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
@@ -44,7 +41,6 @@ fun ScheduleScreen(
     
     // Date State
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
-    // Using simple logic: The generic schedule "Monday" corresponds to any Monday date
     
     var scheduleItems by remember { mutableStateOf<List<ScheduleItem>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
@@ -56,7 +52,6 @@ fun ScheduleScreen(
         isLoading = false
     }
     
-
     val selectedDayOfWeek = selectedDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
 
     Column(
@@ -127,12 +122,11 @@ fun ScheduleScreen(
         
         Spacer(modifier = Modifier.height(16.dp))
         
-        // 3. Calendar Week Strip (Only visible in Day mode or All mode?) 
-        // User asked for "Day" filter. Let's keep calendar visible but logic depends on filter.
+        // 3. Calendar Week Strip
         
         // Filter Chips
         val filters = listOf("All", "Day", "Time")
-        var selectedFilter by remember { mutableStateOf("Day") }
+        var selectedFilter by remember { mutableStateOf("All") }
         
         Row(
             modifier = Modifier
@@ -171,13 +165,6 @@ fun ScheduleScreen(
                     .sortedBy { it.startTime }
             }
             "Time" -> {
-                // Nearest to current time (Future events preferred)
-                val now = java.time.LocalTime.now()
-                // Flatmap schedule to next occurrences?
-                // Simplification for prototype: Sort all items by start time, treating them as today/upcoming.
-                // Better logic: Filter generic items that happen AFTER now (on any day?).
-                // "Time showing all schedule but from nearest time to current"
-                // Let's sort simply by startTime for now, as days are generic.
                 scheduleItems.sortedBy { it.startTime }
             }
             else -> scheduleItems // All
@@ -249,10 +236,6 @@ fun WeekCalendarStrip(
     selectedDate: LocalDate,
     onDateSelected: (LocalDate) -> Unit
 ) {
-    // Calculate start of the week (assuming Sunday start for consistency with previous code)
-    // Adjusting to recenter around selected date or fix to standard week
-    // Let's stick to a static view of the week containing the selectedDate
-    // First day of week (Sunday)
     val firstDayOfWeek = selectedDate.minusDays(selectedDate.dayOfWeek.value.toLong() % 7) 
     
     Row(
@@ -293,7 +276,7 @@ fun TimelineEventCard(item: ScheduleItem) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(20.dp))
+            .background(MaterialTheme.colorScheme.surface, DesignSystem.Shapes.CardShape)
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -326,7 +309,7 @@ fun TimelineEventCard(item: ScheduleItem) {
         // Icon
         Surface(
             modifier = Modifier.size(48.dp),
-            shape = RoundedCornerShape(16.dp),
+            shape = DesignSystem.Shapes.InputShape,
             color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f)
         ) {
             Box(contentAlignment = Alignment.Center) {
@@ -401,5 +384,3 @@ fun EmptyScheduleState(day: String) {
         )
     }
 }
-
-

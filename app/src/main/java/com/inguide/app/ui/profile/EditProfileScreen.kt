@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -17,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.inguide.app.ui.theme.Primary
+import com.inguide.app.ui.theme.DesignSystem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,7 +36,7 @@ fun EditProfileScreen(navController: NavController) {
                 },
                 actions = {
                     TextButton(onClick = { /* TODO: Save */ }) {
-                        Text("Save", color = Primary)
+                        Text("Save", color = MaterialTheme.colorScheme.primary)
                     }
                 }
             )
@@ -60,13 +59,13 @@ fun EditProfileScreen(navController: NavController) {
                         Surface(
                             modifier = Modifier.size(120.dp),
                             shape = CircleShape,
-                            color = Primary.copy(alpha = 0.1f)
+                            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
                         ) {
                             Box(contentAlignment = Alignment.Center) {
                                 Text(
                                     text = "JP",
                                     style = MaterialTheme.typography.displayMedium,
-                                    color = Primary
+                                    color = MaterialTheme.colorScheme.primary
                                 )
                             }
                         }
@@ -76,7 +75,7 @@ fun EditProfileScreen(navController: NavController) {
                                 .size(40.dp)
                                 .align(Alignment.BottomEnd),
                             shape = CircleShape,
-                            color = Primary
+                            color = MaterialTheme.colorScheme.primary
                         ) {
                             IconButton(onClick = { /* TODO: Change photo */ }) {
                                 Icon(
@@ -102,7 +101,7 @@ fun EditProfileScreen(navController: NavController) {
                         Icon(Icons.Outlined.Person, contentDescription = null)
                     },
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.InputShape
                 )
                 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -119,7 +118,7 @@ fun EditProfileScreen(navController: NavController) {
                     },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.InputShape
                 )
                 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -138,7 +137,7 @@ fun EditProfileScreen(navController: NavController) {
                         .fillMaxWidth()
                         .height(120.dp),
                     maxLines = 4,
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.InputShape
                 )
                 
                 Spacer(modifier = Modifier.height(24.dp))
@@ -151,7 +150,7 @@ fun EditProfileScreen(navController: NavController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.ButtonShape
                 ) {
                     Text("Save Changes")
                 }
@@ -166,7 +165,7 @@ fun EditProfileScreen(navController: NavController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = DesignSystem.Shapes.ButtonShape
                 ) {
                     Text("Cancel")
                 }

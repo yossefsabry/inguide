@@ -3,6 +3,7 @@ package com.inguide.app.ui.home
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -26,6 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.inguide.app.navigation.Screen
+import androidx.compose.ui.res.painterResource
+import com.inguide.app.R
 import com.inguide.app.data.DataStoreManager
 import com.inguide.app.data.ScheduleDataStore
 import com.inguide.app.data.model.ScheduleItem
@@ -105,18 +108,26 @@ fun HomeScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Column {
-                            Text(
-                                text = "Welcome back,",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Image(
+                                painter = painterResource(id = R.drawable.ic_logo),
+                                contentDescription = "Logo",
+                                modifier = Modifier.size(40.dp)
                             )
-                            Text(
-                                text = userName,
-                                style = MaterialTheme.typography.headlineSmall,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.onBackground
-                            )
+                            Spacer(modifier = Modifier.width(12.dp))
+                            Column {
+                                Text(
+                                    text = "Welcome back,",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                Text(
+                                    text = userName,
+                                    style = MaterialTheme.typography.headlineSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.onBackground
+                                )
+                            }
                         }
                         
                         Surface(
@@ -317,7 +328,7 @@ fun QuickAccessButton(
         modifier = modifier
             .height(160.dp)
             .clickable(onClick = onClick),
-        shape = DesignSystem.Shapes.BottomSheetShape, // Using BottomSheetShape (24.dp) which matches original 24.dp
+        shape = RoundedCornerShape(24.dp),
         color = MaterialTheme.colorScheme.surface, // Use surface color which adapts to dark/light
         shadowElevation = 2.dp
     ) {

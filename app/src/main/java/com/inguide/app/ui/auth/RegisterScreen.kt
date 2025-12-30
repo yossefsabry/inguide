@@ -2,6 +2,7 @@ package com.inguide.app.ui.auth
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -19,6 +20,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.inguide.app.ui.theme.DesignSystem
+import androidx.compose.ui.res.painterResource
+import com.inguide.app.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -47,24 +50,12 @@ fun RegisterScreen(
             verticalArrangement = Arrangement.Center
         ) {
             // Icon
-            Surface(
-                modifier = Modifier.size(80.dp),
-                shape = RoundedCornerShape(40.dp),
-                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
-                )
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = Icons.Outlined.Person,
-                        contentDescription = null,
-                        modifier = Modifier.size(32.dp),
-                        tint = MaterialTheme.colorScheme.primary
-                    )
-                }
-            }
+            // Logo
+            Image(
+                painter = painterResource(id = R.drawable.ic_logo),
+                contentDescription = "Logo",
+                modifier = Modifier.size(100.dp)
+            )
             
             Spacer(modifier = Modifier.height(24.dp))
             

@@ -39,12 +39,12 @@ fun DashboardScreen(navController: NavController) {
                             text = "Hello, Alex",
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                         Text(
                             text = "Computer Science Dept.",
                             style = MaterialTheme.typography.bodySmall,
-                            color = Color.White.copy(alpha = 0.6f)
+                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
                         )
                     }
                 },
@@ -57,7 +57,7 @@ fun DashboardScreen(navController: NavController) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Back",
-                            tint = Color.White
+                            tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
                 },
@@ -66,12 +66,12 @@ fun DashboardScreen(navController: NavController) {
                         Icon(
                             imageVector = Icons.Outlined.Notifications,
                             contentDescription = "Notifications",
-                            tint = Color.White
+                            tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = DesignSystem.Colors.DashboardBackground
+                    containerColor = MaterialTheme.colorScheme.background
                 )
             )
         }
@@ -79,7 +79,7 @@ fun DashboardScreen(navController: NavController) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(DesignSystem.Colors.DashboardBackground)
+                .background(MaterialTheme.colorScheme.background)
                 .padding(paddingValues)
                 .padding(horizontal = DesignSystem.Dimensions.PaddingMedium)
         ) {
@@ -153,7 +153,7 @@ fun DashboardScreen(navController: NavController) {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = DesignSystem.Shapes.CardShape,
-                    colors = CardDefaults.cardColors(containerColor = DesignSystem.Colors.DashboardCardBackground)
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         CourseProgressItem("Data Structures", 0.72f, DesignSystem.Colors.DashboardWarningRed, "72% (Risk)", "Suggestion: Attend next 3 sessions to reach 80%")
@@ -167,7 +167,7 @@ fun DashboardScreen(navController: NavController) {
                         OutlinedButton(
                             onClick = { /* TODO */ },
                             modifier = Modifier.fillMaxWidth(),
-                            border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.1f)),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)),
                             colors = ButtonDefaults.outlinedButtonColors(contentColor = DesignSystem.Colors.FeatureBlue)
                         ) {
                             Text("View Full Report")
@@ -183,14 +183,14 @@ fun DashboardScreen(navController: NavController) {
                     text = "Recent Activity",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
                 
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = DesignSystem.Shapes.CardShape,
-                    colors = CardDefaults.cardColors(containerColor = DesignSystem.Colors.DashboardCardBackground)
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                 ) {
                     Row(
                         modifier = Modifier.padding(16.dp),
@@ -213,12 +213,12 @@ fun DashboardScreen(navController: NavController) {
                                 "Attendance Marked",
                                 style = MaterialTheme.typography.bodyMedium,
                                 fontWeight = FontWeight.Bold,
-                                color = Color.White
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                             Text(
                                 "Marked present for Web Development lecture.",
                                 style = MaterialTheme.typography.bodySmall,
-                                color = Color.White.copy(alpha = 0.6f)
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                             )
                         }
                         
@@ -242,8 +242,8 @@ fun DashboardScreen(navController: NavController) {
 fun AttendanceScoreCard() {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = DesignSystem.Shapes.BottomSheetShape, // Using BottomSheetShape (Top rounded 24dp) or just a large rounded shape. Let's stick to CardShape or create a LargeCardShape if needed. The original was 24.dp. BottomSheetShape is top 24.dp. Let's use CardShape (16.dp) for consistency, or simply a custom shape if strictly needed. I'll use CardShape for uniformity.
-        colors = CardDefaults.cardColors(containerColor = DesignSystem.Colors.DashboardCardBackground)
+        shape = DesignSystem.Shapes.CardShape,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column {
             // Top Section
@@ -255,7 +255,7 @@ fun AttendanceScoreCard() {
                     Text(
                         "ATTENDANCE SCORE",
                         style = MaterialTheme.typography.labelSmall,
-                        color = Color.White.copy(alpha = 0.6f),
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
                         letterSpacing = 1.sp
                     )
                     Spacer(modifier = Modifier.height(4.dp))
@@ -263,12 +263,12 @@ fun AttendanceScoreCard() {
                         "85%",
                         style = MaterialTheme.typography.displayMedium,
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
                         "You are in the safe zone",
                         style = MaterialTheme.typography.bodySmall,
-                        color = Color.White.copy(alpha = 0.6f)
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                     )
                 }
                 
@@ -360,7 +360,7 @@ fun AttendanceScoreCard() {
                     Text(
                         "Tap to justify",
                         style = MaterialTheme.typography.labelSmall,
-                        color = Color.White.copy(alpha = 0.5f)
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                     )
                 }
             }
@@ -387,7 +387,7 @@ fun QuickActionButton(text: String, icon: ImageVector, color: Color) {
         Surface(
             modifier = Modifier.size(56.dp),
             shape = DesignSystem.Shapes.CardShape,
-            color = DesignSystem.Colors.DashboardCardBackground
+            color = MaterialTheme.colorScheme.surfaceVariant
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Icon(
@@ -401,7 +401,7 @@ fun QuickActionButton(text: String, icon: ImageVector, color: Color) {
         Text(
             text = text,
             style = MaterialTheme.typography.labelSmall,
-            color = Color.White.copy(alpha = 0.7f)
+            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)
         )
     }
 }
@@ -435,7 +435,7 @@ fun CriticalWarningCard() {
             Text(
                 text = "You have reached 85% absence in \"Data Structures\". Attending the next 2 lectures is mandatory to avoid penalties.",
                 style = MaterialTheme.typography.bodySmall,
-                color = Color.White.copy(alpha = 0.8f)
+                color = Color.White.copy(alpha = 0.9f)
             )
             
             Spacer(modifier = Modifier.height(16.dp))
@@ -464,7 +464,7 @@ fun UpcomingClassCard(
     Card(
         modifier = Modifier.width(280.dp),
         shape = DesignSystem.Shapes.CardShape,
-        colors = CardDefaults.cardColors(containerColor = DesignSystem.Colors.DashboardCardBackground)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             // Badge & Time
@@ -487,7 +487,7 @@ fun UpcomingClassCard(
                 Text(
                     text = time,
                     style = MaterialTheme.typography.bodySmall,
-                    color = Color.White.copy(alpha = 0.6f)
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                 )
             }
             
@@ -497,12 +497,12 @@ fun UpcomingClassCard(
                 title,
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Text(
                 subtitle,
                 style = MaterialTheme.typography.bodySmall,
-                color = Color.White.copy(alpha = 0.6f)
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
             )
             
             Spacer(modifier = Modifier.height(16.dp))
@@ -511,14 +511,14 @@ fun UpcomingClassCard(
                 Icon(
                     imageVector = Icons.Default.Info,
                     contentDescription = null,
-                    tint = Color.White.copy(alpha = 0.4f),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                     modifier = Modifier.size(16.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     note,
                     style = MaterialTheme.typography.bodySmall,
-                    color = Color.White.copy(alpha = 0.4f)
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
                 )
             }
         }
@@ -542,7 +542,7 @@ fun CourseProgressItem(
                 name,
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.SemiBold,
-                color = Color.White
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Text(
                 statusText,
@@ -566,7 +566,7 @@ fun CourseProgressItem(
             Text(
                 suggestion,
                 style = MaterialTheme.typography.labelSmall,
-                color = Color.White.copy(alpha = 0.5f),
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
                 fontSize = 10.sp
             )
         }

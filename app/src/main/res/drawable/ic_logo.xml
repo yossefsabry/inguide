@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="160dp"
+    android:height="160dp"
+    android:viewportWidth="160"
+    android:viewportHeight="160">
+    
+    <!-- Background Container matches SVG rect -->
+    <path
+        android:fillColor="#660A2126"
+        android:strokeColor="#0DFFFFFF"
+        android:strokeWidth="1"
+        android:pathData="M40,0.5 H120 A39.5,39.5 0 0 1 159.5,40 V120 A39.5,39.5 0 0 1 120,159.5 H40 A39.5,39.5 0 0 1 0.5,120 V40 A39.5,39.5 0 0 1 40,0.5 z"/>
+
+    <!-- Inner Circle (Primary Teal) -->
+    <path
+        android:fillColor="#06D6D0"
+        android:pathData="M80,40 A40,40 0 1 1 80,120 A40,40 0 1 1 80,40"/>
+        
+    <!-- Compass Needle (Dark) -->
+    <path
+        android:fillColor="#020F12"
+        android:pathData="M80,60 L86,80 L80,100 L74,80 Z"/>
+        
+    <!-- Center Pin (Teal) -->
+    <path
+        android:fillColor="#06D6D0"
+        android:pathData="M80,77 A3,3 0 1 1 80,83 A3,3 0 1 1 80,77"/>
+</vector>

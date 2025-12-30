@@ -17,8 +17,8 @@ object DesignSystem {
 
     object Colors {
         // Primary Brand Colors
-        val Primary = Color(0xFF007AFF)
-        val PrimaryDark = Color(0xFF0051D5)
+        val Primary = Color(0xFF06D6D0) // Teal
+        val PrimaryDark = Color(0xFF04A8A3)
         
         // Secondary Brand Colors
         val Secondary = Color(0xFFFF9500)
@@ -31,8 +31,8 @@ object DesignSystem {
         val Warning = Color(0xFFFFD60A)
 
         // Gradients
-        val GradientStart = Color(0xFF007AFF)
-        val GradientEnd = Color(0xFF5856D6)
+        val GradientStart = Color(0xFF06D6D0)
+        val GradientEnd = Color(0xFF04A8A3)
         
         // Shimmer
         val ShimmerLight = Color(0xFFF0F0F0)
@@ -45,8 +45,8 @@ object DesignSystem {
         val FeatureBlue = Color(0xFF007AFF)
 
         // Dashboard Specific Colors (Dark aesthetics)
-        val DashboardBackground = Color(0xFF0F111A)
-        val DashboardCardBackground = Color(0xFF1E2230)
+        val DashboardBackground = Color(0xFF020F12)
+        val DashboardCardBackground = Color(0xFF0A2126)
         val DashboardWarningRed = Color(0xFFFF3B30) // Same as Error but explicit for dashboard
         val DashboardCautionYellow = Color(0xFFFFCC00)
 
@@ -71,8 +71,8 @@ object DesignSystem {
             primary = Primary,
             secondary = Secondary,
             tertiary = Success,
-            background = Color(0xFF121212),
-            surface = Color(0xFF1C1C1E),
+            background = Color(0xFF020F12), // Dark Background
+            surface = Color(0xFF0A2126),    // Surface Dark
             surfaceVariant = Color(0xFF2C2C2E), // Card Background
             onPrimary = Color.White,
             onSecondary = Color.White,
